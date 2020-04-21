@@ -13,7 +13,7 @@ namespace SalesWebMVC.Services
         // criar dependencia
         private readonly SalesWebMVCContext _context;
 
-        public SellerService( SalesWebMVCContext context)
+        public SellerService(SalesWebMVCContext context)
         {
             _context = context;
         }
@@ -30,21 +30,17 @@ namespace SalesWebMVC.Services
             _context.SaveChanges();
         }
 
-        public Seller FindByAdd(int id)
+        public Seller FindById(int id)
         {
             return _context.Seller.FirstOrDefault(obj => obj.Id == id);
         }
 
-        public void Remove (int id)
+        public void Remove(int id)
         {
             var obj = _context.Seller.Find(id);
             _context.Seller.Remove(obj);
             _context.SaveChanges();
         }
 
-        internal object FindById(int value)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

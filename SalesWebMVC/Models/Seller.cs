@@ -9,19 +9,38 @@ namespace SalesWebMVC.Models
 {
     public class Seller
     {
+        [Required(ErrorMessage = "{0} required")]
         public int Id { get; set; }
+
+
+        [Required(ErrorMessage = "{0} required")]
+        [StringLength(60, MinimumLength = 5, ErrorMessageResourceName = "{0} size should beteween {2} and {1}")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "{0} required")]
+        [EmailAddress(ErrorMessage = "Enter a valid email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Display(Name = "Birth Date")]
+
+        [Required(ErrorMessage = "{0} required")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
+
+        [Range(100.00, 50000.0, ErrorMessage = "{0} must be from {1} and {2}")]
+        [Required(ErrorMessage = "{0} required")]
         [Display(Name = "Base Salary")]
-        [DisplayFormat(DataFormatString ="{0:C2}")]
-        public double BaseSalary{ get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public double BaseSalary { get; set; }
+
+
         public Department Department { get; set; }
+
+
         public int DepartmentId { get; set; }
+
+
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
         public Seller()
         {
@@ -41,7 +60,7 @@ namespace SalesWebMVC.Models
         {
             Sales.Add(sr);
         }
-        public void RemoveSales (SalesRecord sr)
+        public void RemoveSales(SalesRecord sr)
         {
             Sales.Remove(sr);
         }

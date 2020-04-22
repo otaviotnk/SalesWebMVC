@@ -10,7 +10,7 @@ namespace SalesWebMVC.Models
     {
         public int Id{ get; set; }
         public DateTime Date { get; set; }
-        public double Ammount { get; set; }
+        public double Amount { get; set; }
         public SalesStatus Status { get; set; }
         public Seller Seller { get; set; }
 

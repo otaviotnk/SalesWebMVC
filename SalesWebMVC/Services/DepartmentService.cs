@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SalesWebMVC.Models;
 using SalesWebMVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMVC.Services
 {
@@ -17,11 +18,11 @@ namespace SalesWebMVC.Services
             _context = context;
         }
 
-        //retorna lista com todos os vendedores
+        //retorna lista com todos os vendedores assincrona, task, nao bloqueia a aplicacao
 
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
         public void Insert(Seller obj)
         {

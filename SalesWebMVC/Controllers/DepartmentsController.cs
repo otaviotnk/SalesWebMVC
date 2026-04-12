@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMVC.Data;
 using SalesWebMVC.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SalesWebMVC.Controllers
 {
-    public class DepartmentsController : Controller
+    public class DepartmentsController(SalesWebMVCContext context) : Controller
     {
-        private readonly SalesWebMVCContext _context;
-
-        public DepartmentsController(SalesWebMVCContext context)
-        {
-            _context = context;
-        }
+        private readonly SalesWebMVCContext _context = context;
 
         // GET: Departments
         public async Task<IActionResult> Index()
@@ -50,8 +43,6 @@ namespace SalesWebMVC.Controllers
         }
 
         // POST: Departments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Department department)

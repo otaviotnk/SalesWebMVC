@@ -20,10 +20,10 @@ SalesWebMVC é um sistema web baseado em CRUD que permite gerenciar vendedores, 
 
 | Tecnologia | Versão |
 |---|---|
-| .NET Core | 2.1 |
-| ASP.NET Core MVC | 2.1 |
-| Entity Framework Core | 2.1 |
-| Pomelo.EntityFrameworkCore.MySql | 2.1.1 |
+| .NET | 10.0 |
+| ASP.NET Core MVC | 10.0 |
+| Entity Framework Core | 9.0 |
+| Pomelo.EntityFrameworkCore.MySql | 9.0.0 |
 | MySQL | — |
 | Razor Views | — |
 
@@ -58,12 +58,12 @@ SalesWebMVC/
 │   └── SellerService.cs
 ├── Migrations/
 ├── appsettings.json
-└── Startup.cs
+└── Program.cs
 ```
 
 ## ⚙️ Pré-requisitos
 
-- [.NET Core SDK 2.1](https://dotnet.microsoft.com/en-us/download/dotnet/2.1)
+- [.NET SDK 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 - [MySQL Server](https://dev.mysql.com/downloads/mysql/)
 
 ## 🔧 Configuração e Execução
@@ -105,15 +105,13 @@ Na primeira execução, o serviço de seeding popula o banco com:
 
 - **4 Departamentos**: Computers, Electronics, Fashion, Books
 - **6 Vendedores**: Bob Brown, Maria Green, Alex Grey, Martha Red, Donald Blue, Alex Pink
-- **30 Registros de Vendas** distribuídos entre setembro e outubro de 2018, com status variados (Faturado, Pendente, Cancelado)
+- **30 Registros de Vendas** com datas aleatórias distribuídas ao longo do ano anterior ao atual, com status variados (Faturado, Pendente, Cancelado)
 
 ## 📦 Pacotes NuGet
 
 ```xml
-<PackageReference Include="Microsoft.AspNetCore.App" />
-<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" />
-<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
-<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.1" />
+<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7" />
+<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
 ```
 
 ## 📄 Licença

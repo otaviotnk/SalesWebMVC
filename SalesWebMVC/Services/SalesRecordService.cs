@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SalesWebMVC.Data;
+using SalesWebMVC.Interfaces;
 using SalesWebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,9 @@ using System.Threading.Tasks;
 
 namespace SalesWebMVC.Services
 {
-    public class SalesRecordService
+    public class SalesRecordService(SalesWebMVCContext context) : ISalesRecordService
     {
-        private readonly SalesWebMVCContext _context;
-
-        public SalesRecordService(SalesWebMVCContext context)
-        {
-            _context = context;
-        }
+        private readonly SalesWebMVCContext _context = context;
 
         public async Task<List<SalesRecord>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
         {
@@ -28,8 +24,12 @@ namespace SalesWebMVC.Services
             {
                 result = result.Where(x => x.Date <= maxDate.Value);
             }
-            //join das tabelas / assincrona
-            return await result.Include(x => x.Seller).Include(x => x.Seller.Department).OrderByDescending(x => x.Date).ToListAsync();
+
+            return await result
+                .Include(x => x.Seller)
+                .Include(x => x.Seller.Department)
+                .OrderByDescending(x => x.Date)
+                .ToListAsync();
         }
 
         public async Task<List<IGrouping<Department, SalesRecord>>> FindByDateGroupingAsync(DateTime? minDate, DateTime? maxDate)
@@ -43,8 +43,13 @@ namespace SalesWebMVC.Services
             {
                 result = result.Where(x => x.Date <= maxDate.Value);
             }
-            //join das tabelas / assincrona
-            return await result.Include(x => x.Seller).Include(x => x.Seller.Department).OrderByDescending(x => x.Date).GroupBy(x => x.Seller.Department).ToListAsync();
+            
+            return await result
+                .Include(x => x.Seller)
+                .Include(x => x.Seller.Department)
+                .OrderByDescending(x => x.Date)
+                .GroupBy(x => x.Seller.Department)
+                .ToListAsync();
         }
     }
 }

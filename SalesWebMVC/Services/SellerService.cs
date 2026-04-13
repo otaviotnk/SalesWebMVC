@@ -1,31 +1,25 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesWebMVC.Data;
+using SalesWebMVC.Interfaces;
+using SalesWebMVC.Models;
+using SalesWebMVC.Services.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SalesWebMVC.Models;
-using SalesWebMVC.Data;
-using SalesWebMVC.Services.Exceptions;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace SalesWebMVC.Services
 {
-    public class SellerService
+    public class SellerService(SalesWebMVCContext context) : ISellerService
     {
-        // criar dependencia
-        private readonly SalesWebMVCContext _context;
-
-        public SellerService(SalesWebMVCContext context)
-        {
-            _context = context;
-        }
-
-        //retorna lista com todos os vendedores
+        private readonly SalesWebMVCContext _context = context;
 
         public async Task<List<Seller>> FindAllAsync()
         {
             return await _context.Seller.ToListAsync();
         }
+
         public async Task InsertAsync(Seller obj)
         {
             _context.Add(obj);
@@ -34,7 +28,9 @@ namespace SalesWebMVC.Services
 
         public async Task<Seller> FindByIdAsync(int id)
         {
-            return await _context.Seller.Include(obj => obj.Department).FirstOrDefaultAsync(obj => obj.Id == id);
+            return await _context.Seller
+                .Include(obj => obj.Department)
+                .FirstOrDefaultAsync(obj => obj.Id == id);
         }
 
         public async Task RemoveAsync(int id)

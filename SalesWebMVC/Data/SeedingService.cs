@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SalesWebMVC.Models;
+using SalesWebMVC.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using SalesWebMVC.Models;
-using SalesWebMVC.Models.Enums;
 
 namespace SalesWebMVC.Data
 {
@@ -14,10 +13,10 @@ namespace SalesWebMVC.Data
         public void Seed()
         {
             if (_context.Department.Any() || _context.Seller.Any() || _context.SalesRecord.Any())
-            {                
+            {
                 return;
-            }            
-            
+            }
+
             Department department1 = new("Computers");
             Department department2 = new("Electronics");
             Department department3 = new("Fashion");
@@ -38,7 +37,7 @@ namespace SalesWebMVC.Data
                 new(RandomDatePreviousYear(), 4000.0, SalesStatus.Canceled, seller4),
                 new(RandomDatePreviousYear(), 8000.0, SalesStatus.Billed, seller1),
                 new(RandomDatePreviousYear(), 3000.0, SalesStatus.Billed, seller3),
-                new(RandomDatePreviousYear(), 2000.0, SalesStatus.Billed, seller1), 
+                new(RandomDatePreviousYear(), 2000.0, SalesStatus.Billed, seller1),
                 new(RandomDatePreviousYear(), 13000.0, SalesStatus.Billed, seller2),
                 new(RandomDatePreviousYear(), 4000.0, SalesStatus.Billed, seller4),
                 new(RandomDatePreviousYear(), 11000.0, SalesStatus.Pending, seller6),

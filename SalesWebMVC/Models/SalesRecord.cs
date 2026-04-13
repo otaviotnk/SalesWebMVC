@@ -1,8 +1,5 @@
 ﻿using SalesWebMVC.Models.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace SalesWebMVC.Models
@@ -14,7 +11,7 @@ namespace SalesWebMVC.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
 
-        [DisplayFormat(DataFormatString ="{0:C2}")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double Amount { get; set; }
 
 

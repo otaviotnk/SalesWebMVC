@@ -1,11 +1,19 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
-<address>
-    <p> Contato: <a href="otavio.atr@gmail.com">E-mail de contato</a></p>
-</address>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <span class="glyphicon glyphicon-info-sign"></span> About
+        </h3>
+    </div>
+    <div class="panel-body">
+        <h4>@ViewData["Message"]</h4>
+        <p>Sales management web application built with ASP.NET Core MVC and Entity Framework Core.</p>
+        <address>
+            <strong>Contact:</strong> <a href="mailto:otavio.atr@gmail.com">otavio.atr@gmail.com</a>
+        </address>
+    </div>
+</div>
 

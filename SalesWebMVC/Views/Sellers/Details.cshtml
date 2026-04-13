@@ -1,50 +1,33 @@
 ﻿@model SalesWebMVC.Models.Seller
+
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Seller Details";
 }
 
-<h2>@ViewData["Title"]</h2>
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BaseSalary)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BaseSalary)
-        </dd>
-        <dt>
-            Department
-            @Html.DisplayNameFor(model => model.Department.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Department.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-default" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-    <a asp-action="Index">Back to List</a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <span class="glyphicon glyphicon-info-sign"></span> Seller Details
+        </h3>
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd>@Html.DisplayFor(model => model.Name)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd>@Html.DisplayFor(model => model.Email)</dd>
+            <dt>@Html.DisplayNameFor(model => model.BirthDate)</dt>
+            <dd>@Html.DisplayFor(model => model.BirthDate)</dd>
+            <dt>@Html.DisplayNameFor(model => model.BaseSalary)</dt>
+            <dd>@Html.DisplayFor(model => model.BaseSalary)</dd>
+            <dt>Department</dt>
+            <dd>@Html.DisplayFor(model => model.Department.Name)</dd>
+        </dl>
+    </div>
+    <div class="panel-footer">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">
+            <span class="glyphicon glyphicon-pencil"></span> Edit
+        </a>
+        <a asp-action="Index" class="btn btn-default btn-sm">Back to List</a>
+    </div>
 </div>

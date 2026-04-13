@@ -42,6 +42,10 @@ app.UseRequestLocalization(new RequestLocalizationOptions
     SupportedUICultures = [cultureInfo]
 });
 
+using var migrationScope = app.Services.CreateScope();
+var dbContext = migrationScope.ServiceProvider.GetRequiredService<SalesWebMVCContext>();
+dbContext.Database.Migrate();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
